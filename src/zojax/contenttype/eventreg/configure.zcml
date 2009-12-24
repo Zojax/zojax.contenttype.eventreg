@@ -1,0 +1,216 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zcml="http://namespaces.zope.org/zcml"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.contenttype.eventreg">
+
+  <permission
+     id="zojax.contenttype.AddEventReg"
+     title="ContentType: Add event registrable" />
+
+  <permission
+     id="zojax.contenttype.ViewEventRegRegistrations"
+     title="ContentType: View event registrable registrations" />
+
+  <permission
+     id="zojax.contenttype.EditEventRegRegistrations"
+     title="ContentType: Edit event registrable registrations" />
+
+  <permission
+     id="zojax.contenttype.AddEventRegGroup"
+     title="ContentType: Add event registrable group" />
+
+  <permission
+     id="zojax.contenttype.AddEventRegRegistration"
+     title="ContentType: Add event registrable registration" />
+
+  <grant
+     role="content.Owner"
+     permission="zojax.contenttype.AddEventReg" />
+
+  <grant
+     role="content.Owner"
+     permission="zojax.contenttype.AddEventRegRegistration" />
+
+  <grant
+     role="content.Owner"
+     permission="zojax.contenttype.ViewEventRegRegistrations" />
+
+  <grant
+     role="content.Owner"
+     permission="zojax.contenttype.EditEventRegRegistrations" />
+
+  <grant
+     role="content.Owner"
+     permission="zojax.contenttype.AddEventRegGroup" />
+
+  <registerIn registry="zojax.product.zojax-contenttypes">
+
+  <!-- Event -->
+
+    <zojax:content
+       title="Event Registrable"
+       name="contenttype.eventreg.event"
+       class=".eventreg.EventReg"
+       schema=".interfaces.IEventReg"
+       contenttype=".interfaces.IEventRegType"
+       contains="contenttype.eventreg.registration"
+       type="zojax.content.type.interfaces.IActivePortalType"
+       description="Information about an upcoming registrable event, which can be displayed in the calendar."
+       permission="zojax.contenttype.AddEventReg" />
+
+    <class class=".eventreg.EventReg">
+      <implements interface="zojax.ownership.interfaces.IOwnerAware" />
+      <implements interface="zojax.content.type.interfaces.ISearchableContent" />
+
+      <require
+   permission="zope.View"
+   interface=".interfaces.IEventReg" />
+
+      <require
+   permission="zojax.ModifyContent"
+   set_schema=".interfaces.IEventReg" />
+
+   <require
+  permission="zojax.contenttype.ViewEventRegRegistrations"
+  interface="zope.app.container.interfaces.IReadContainer"
+  />
+
+  <require
+  permission="zojax.contenttype.EditEventRegRegistrations"
+  interface="zope.app.container.interfaces.IWriteContainer"
+  />
+    </class>
+
+    <adapter factory=".eventreg.SearchableText" />
+
+    <browser:icon
+       name="zmi_icon"
+       for=".interfaces.IEventReg"
+       file="eventreg_icon.gif" />
+
+    <browser:icon
+       name="zmi_icon"
+       for=".interfaces.IEventRegType"
+       file="eventreg_icon.gif" />
+
+  <!-- Event Group -->
+
+  <zojax:content
+       title="Event Registrable Group"
+       name="contenttype.eventreg.group"
+       class=".eventreggroup.EventRegGroup"
+       schema=".interfaces.IEventRegGroup"
+       contenttype=".interfaces.IEventRegGroupType"
+       type="zojax.content.type.interfaces.IActivePortalType"
+       description="Information about group of an upcoming registrable events, which can be displayed in the calendar."
+       permission="zojax.contenttype.AddEventRegGroup"
+       contains="contenttype.eventreg" />
+
+    <class class=".eventreggroup.EventRegGroup">
+      <implements interface="zojax.ownership.interfaces.IOwnerAware" />
+      <implements interface="zojax.content.type.interfaces.ISearchableContent" />
+
+      <require
+   permission="zope.View"
+   interface=".interfaces.IEventRegGroup
+              zope.app.container.interfaces.IReadContainer" />
+
+      <require
+   permission="zojax.ModifyContent"
+   set_schema=".interfaces.IEventRegGroup"
+   interface="zope.app.container.interfaces.IWriteContainer" />
+
+    </class>
+
+    <adapter factory=".eventreggroup.SearchableText" />
+
+    <browser:icon
+       name="zmi_icon"
+       for=".interfaces.IEventRegGroup"
+       file="eventreggroup_icon.gif" />
+
+    <browser:icon
+       name="zmi_icon"
+       for=".interfaces.IEventRegGroupType"
+       file="eventreggroup_icon.gif" />
+
+    <!-- Event Registration -->
+
+    <zojax:content
+       title="Event Registrable Registration"
+       name="contenttype.eventreg.registration"
+       class=".registration.EventRegRegistration"
+       schema=".interfaces.IEventRegRegistration"
+       contenttype=".interfaces.IEventRegRegistrationType"
+       type="zojax.content.type.interfaces.IActivePortalType"
+       description="Registration for an upcoming registrable event, which can be displayed in the calendar."
+       permission="zojax.contenttype.AddEventRegRegistration"
+       containers="contenttype.eventreg.event" />
+
+    <class class=".registration.EventRegRegistration">
+      <implements interface="zojax.ownership.interfaces.IOwnerAware" />
+
+      <require
+   permission="zope.View"
+   interface=".interfaces.IEventRegRegistration" />
+
+      <require
+   permission="zojax.ModifyContent"
+   set_schema=".interfaces.IEventRegRegistration" />
+
+    </class>
+
+    <class class=".attendee.Attendee">
+
+      <allow
+        interface=".interfaces.IAttendee" />
+
+    </class>
+
+    <class class=".invitation.Invitation">
+
+      <allow
+        interface=".interfaces.IInvitation" />
+
+    </class>
+
+    <class class=".survey.Survey">
+
+      <allow
+        interface=".interfaces.ISurvey" />
+
+    </class>
+
+  </registerIn>
+
+  <!-- support extensions -->
+  <class class=".eventreg.EventReg" zcml:condition="installed zojax.extensions">
+    <implements interface="zojax.extensions.interfaces.IExtensible" />
+  </class>
+  <class class=".eventreggroup.EventRegGroup" zcml:condition="installed zojax.extensions">
+    <implements interface="zojax.extensions.interfaces.IExtensible" />
+  </class>
+  <class class=".registration.EventRegRegistration" zcml:condition="installed zojax.extensions">
+    <implements interface="zojax.extensions.interfaces.IExtensible" />
+  </class>
+
+  <!-- support attachments -->
+  <class class=".eventreg.EventReg" zcml:condition="installed zojax.content.attachment">
+    <implements interface="zojax.content.attachment.interfaces.IAttachmentsAware" />
+  </class>
+  <class class=".eventreggroup.EventRegGroup" zcml:condition="installed zojax.content.attachment">
+    <implements interface="zojax.content.attachment.interfaces.IAttachmentsAware" />
+  </class>
+
+  <!-- widget -->
+  <adapter factory=".listwidget.ListDataConverter" />
+
+  <!-- generations -->
+  <utility
+     name="zojax.contenttype.eventreg"
+     provides="zope.app.generations.interfaces.ISchemaManager"
+     component=".generations.schemaManager" />
+
+</configure>

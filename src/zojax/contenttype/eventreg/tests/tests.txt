@@ -1,0 +1,186 @@
+==================
+Event Registration
+==================
+
+    >>> from zope import component, interface
+    >>> from zope.testbrowser.testing import Browser
+    >>> from zojax.folder.folder import Folder
+    >>> import re
+
+    >>> root = getRootFolder()
+    >>> root['folder'] = Folder('Folder')
+
+    >>> actor = Browser()
+    >>> actor.handleErrors = False
+    >>> actor.addHeader("Authorization", "Basic mgr:mgrpw")
+
+Install product
+
+    >>> actor.open("http://localhost/settings/")
+    >>> actor.getLink('Products management').click()
+    >>> actor.getControl(name='availproducts:list').value = [
+    ...     'zojax-contenttypes', 'zojax-calendar']
+    >>> actor.getControl(name='install').click()
+
+Add Event
+---------
+
+    >>> actor.open("http://localhost/folder/contents.html")
+    >>> actor.getLink('Add').click()
+    >>> actor.getLink('Event Registrable', index=0).click()
+
+    >>> actor.getControl('Title').value = u'Test news item'
+    >>> actor.getControl('Event Location').value = u'Kazakhstan, Almaty'
+    >>> actor.getControl('Event Starts').value = u'07/01/01 10:00'
+    >>> actor.getControl('Event Ends').value = u'07/10/01 10:00'
+    >>> actor.getControl('Event URL').value = u'http://zojax.net/'
+    >>> actor.getControl('Link to Directions').value = u'http://zojax.net/road/'
+    >>> actor.getControl('Email Comment').value = u'Some Email Comment'
+    >>> actor.getControl(name='form.widgets.managerEmails.buttons.add').click()
+    >>> actor.getControl('Manager Email').value = u'manager@ua.fm'
+    >>> actor.getControl('Contact Name').value = u'Nikolay Kim'
+    >>> actor.getControl('Contact E-mail').value = u'fafhrd91@gmail.com'
+    >>> actor.getControl('Body').value = u'Test Event'
+    >>> actor.getControl(name='add_input_name').value = 'event'
+    >>> actor.getControl(name='form.buttons.add').click()
+    >>> actor.url
+    'http://localhost/folder/event/context.html'
+
+View
+----
+
+    >>> print actor.contents
+    <!DOCTYPE html...
+    ...
+    <table summary="Event registrable details">
+       <tbody>
+          <tr>
+            <th>When</th>
+            <td>
+              2007 1 1  02:00:00
+              <span>to</span> <br />
+              2007 10 1  03:00:00
+          </td>
+          </tr>
+          <tr>
+            <th>Where</th>
+            <td>Kazakhstan, Almaty</td>
+          </tr>
+          <tr>
+            <th>Contact Name</th>
+            <td>Nikolay Kim</td>
+          </tr>
+          <tr>
+            <th>Contact E-mail</th>
+            <td>
+              <a href="emailto:fafhrd91@gmail.com">fafhrd91@gmail.com</a>
+            </td>
+          </tr>
+       </tbody>
+    </table>
+    ...
+    <div>Test Event</div>
+    ...
+    </html>
+
+
+Edit
+----
+
+    >>> actor.open("http://localhost/folder/event/context.html")
+    >>> actor.getLink('Edit').click()
+    >>> actor.getControl('Title').value = 'New event'
+    >>> actor.getControl(name='form.buttons.save').click()
+
+
+Add Registration
+----------------
+
+    >>> actor.open("http://localhost/folder/event/contents.html")
+    >>> actor.getLink('Add').click()
+    >>> actor.getLink('Event Registrable Registration', index=0).click()
+
+    >>> actor.getControl('Contact First Name').value = u'Some'
+    >>> actor.getControl('Contact Last Name').value = u'Body'
+    >>> actor.getControl('Contact Email').value = u'some.body@ua.fm'
+    >>> actor.getControl('Contact Day-Time Phone').value = u'5234523452345'
+    >>> actor.getControl('Comments or Questions').value = u'some comment'
+    >>> actor.getControl(name='form.widgets.attendees.buttons.add').click()
+    >>> actor.getControl('First Name', index=1).value = u'One'
+    >>> actor.getControl('Last Name', index=1).value = u'Thing'
+    >>> actor.getControl('Company').value = u'Super Compay'
+    >>> actor.getControl('Email', index=1).value = u'one.thing@ua.fm'
+    >>> actor.getControl(name='form.buttons.add').click()
+    >>> actor.url
+    'http://localhost/folder/event/EventRegRegistration/context.html'
+
+Add Event Group
+---------
+
+    >>> actor.open("http://localhost/folder/contents.html")
+    >>> actor.getLink('Add').click()
+    >>> actor.getLink('Event Registrable Group').click()
+
+    >>> actor.getControl('Title').value = u'Test event group'
+    >>> actor.getControl('Description').value = u'Some description'
+    >>> actor.getControl('Body').value = u'Test Event Group'
+    >>> actor.getControl(name='add_input_name').value = 'eventgroup'
+    >>> actor.getControl(name='form.buttons.add').click()
+
+View
+----
+
+    >>> print actor.contents
+    <!DOCTYPE html...
+    ...
+    <table summary="Event registrable group details">
+    ...
+    </table>
+    ...
+    <div>Test Event Group</div>
+    ...
+    </html>
+
+
+Edit
+----
+
+    >>> actor.open("http://localhost/folder/eventgroup/context.html")
+    >>> actor.getLink('Edit').click()
+    >>> actor.getControl('Title').value = 'New event group'
+    >>> actor.getControl(name='form.buttons.save').click()
+
+Events portlet
+--------------
+
+we need install calendar product
+
+    >>> actor.open("http://localhost/portlet.html")
+    >>> print actor.contents
+    <!DOCTYPE html...
+    ...
+    ...<div class="z-portlet">
+         <div class="z-portlet-header">Upcoming events</div>
+           <div class="z-portlet-body">
+              <div class="z-portlet-item even">
+                <a href="http://localhost/folder/event/" title="">New event</a>
+                <span class="z-portlet-item-details">
+                Kazakhstan, Almaty, <br />
+                  07/01/01 02:00
+                </span>
+              </div>
+           </div>
+         </div>
+       </div>
+    ...
+    </html>
+
+
+Unistall product
+----------------
+
+    >>> actor.open("http://localhost/settings/")
+    >>> actor.getLink('Products management').click()
+    >>> actor.getControl(name='products:list').value = ['zojax-contenttypes']
+    >>> actor.getControl(name='uninstall').click()
+

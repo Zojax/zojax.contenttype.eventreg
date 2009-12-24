@@ -1,0 +1,70 @@
+<div class="z-contenttypes-eventDetails" i18n:domain="zojax.contenttypes">
+  <table summary="Event registrable registration details" i18n:attributes="summary">
+    <tbody>
+      <tr>
+        <th i18n:translate="">When</th>
+        <td tal:define="date python:modules['zope.dublincore.interfaces'].IZopeDublinCore(context).created">
+          <tal:block content="structure formatter:dateTime,medium:date" />
+        </td>
+      </tr>
+      <tr tal:condition="context/contactFirstName">
+        <th i18n:translate="">Contact First Name</th>
+        <td tal:content="context/contactFirstName">John Smith</td>
+      </tr>
+      <tr tal:condition="context/contactLastName">
+        <th i18n:translate="">Contact Last Name</th>
+        <td tal:content="context/contactLastName">John Smith</td>
+      </tr>
+      <tr tal:define="contact_email context/contactEmail"
+    tal:condition="contact_email">
+        <th i18n:translate="">Contact E-mail</th>
+        <td>
+          <a tal:attributes="href string:emailto:$contact_email"
+       tal:content="contact_email"></a>
+        </td>
+      </tr>
+      <tr tal:condition="context/contactPhone">
+        <th i18n:translate="">Contact Phone</th>
+        <td tal:content="context/contactPhone">555-GET-PLONE</td>
+      </tr>
+      <tr tal:condition="context/attendees">
+        <th i18n:translate="">Attendees</th>
+        <td>
+          <table summary="Attendee" i18n:attributes="summary" tal:repeat="attendee context/attendees">
+          <tbody>
+            <tr>
+              <th i18n:translate="">Name</th>
+              <td>
+                <tal:block content="attendee/title" /> <tal:block content="attendee/firstName" /> <tal:block content="attendee/lastName" />
+              </td>
+            </tr>
+            <tr>
+              <th i18n:translate="">Company</th>
+              <td>
+                <tal:block content="attendee/company" />
+              </td>
+            </tr>
+            <tr>
+              <th i18n:translate="">Email</th>
+              <td>
+                <tal:block content="attendee/email" />
+              </td>
+            </tr>
+          </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<tal:block i18n:domain="zojax.contenttypes" tal:content="context/description">
+</tal:block>
+
+<p tal:condition="context/event_url|nothing" i18n:domain="">
+  <a href="event_url"
+     tal:attributes="href context/event_url"  i18n:translate="">
+    More information about this event&hellip;</a>
+</p>
+
+<div class="visualClear"></div>
