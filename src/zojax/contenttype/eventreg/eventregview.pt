@@ -1,4 +1,4 @@
-<div class="z-contenttypes-eventDetails" i18n:domain="zojax.contenttypes">
+<div class="z-contenttypes-eventDetails" i18n:domain="zojax.contenttype.eventreg">
   <table summary="Event registrable details" i18n:attributes="summary">
     <tbody>
       <tr>
@@ -33,7 +33,7 @@
   </table>
 </div>
 
-<tal:block i18n:domain="zojax.contenttypes" tal:define="text context/text">
+<tal:block tal:define="text context/text">
   <p tal:condition="not:text" class="discreet" i18n:translate="">
     This item does not have any body text, click the edit tab to change it.
   </p>
@@ -43,7 +43,7 @@
   </div>
 </tal:block>
 
-<p tal:condition="context/event_url|nothing" i18n:domain="">
+<p tal:condition="context/event_url|nothing">
   <a href="event_url"
      tal:attributes="href context/event_url"  i18n:translate="">
     More information about this event&hellip;</a>
