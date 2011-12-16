@@ -1,0 +1,278 @@
+##############################################################################
+#
+# Copyright (c) 2003-2004 Zope Corporation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: Development/Unknown\n"
+"POT-Creation-Date: Thu Dec  8 22:05:52 2011\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+
+#: src/zojax/contenttype/eventreg/eventreggroupview.pt:2
+msgid "Event registrable group details"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/eventreggroupview.pt:9
+#: src/zojax/contenttype/eventreg/eventregview.pt:37
+msgid "This item does not have any body text, click the edit tab to change it."
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/eventregregistrationview.pt:2
+msgid "Event registrable registration details"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/eventregregistrationview.pt:36
+msgid "Name"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/eventregregistrationview.pt:5
+#: src/zojax/contenttype/eventreg/eventregview.pt:5
+msgid "When"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/eventregregistrationview.pt:65
+#: src/zojax/contenttype/eventreg/eventreggroupview.pt:19
+#: src/zojax/contenttype/eventreg/eventregview.pt:47
+msgid "More information about this event&hellip;"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/eventregview.pt:13
+msgid "Where"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/eventregview.pt:2
+msgid "Event registrable details"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/eventregview.pt:8
+msgid "to"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:100
+msgid "Event registrable group body text."
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:118
+#: src/zojax/contenttype/eventreg/interfaces.py:200
+msgid "First Name"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:123
+#: src/zojax/contenttype/eventreg/interfaces.py:205
+msgid "Last Name"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:128
+#: src/zojax/contenttype/eventreg/eventregregistrationview.pt:42
+msgid "Company"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:133
+msgid "Address Line 1"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:138
+msgid "Address Line 2"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:143
+msgid "City"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:148
+msgid "State"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:154
+msgid "Country"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:160
+msgid "Zip (Postal Code)"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:165
+msgid "Phone"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:170
+msgid "Cell Phone"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:175
+#: src/zojax/contenttype/eventreg/interfaces.py:210
+#: src/zojax/contenttype/eventreg/eventregregistrationview.pt:48
+msgid "Email"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:180
+msgid "Member"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:187
+msgid "How did you hear about this event"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:193
+msgid "Your expectations"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:219
+msgid "Event registrable title."
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:223
+msgid "Comments or Questions"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:224
+msgid "A short summary of the event registrable registration."
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:229
+#: src/zojax/contenttype/eventreg/eventregregistrationview.pt:11
+msgid "Contact First Name"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:234
+#: src/zojax/contenttype/eventreg/eventregregistrationview.pt:15
+msgid "Contact Last Name"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:239
+msgid "Contact Email"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:244
+msgid "Contact Day-Time Phone"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:249
+#: src/zojax/contenttype/eventreg/eventregregistrationview.pt:31
+msgid "Attendees"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:250
+#: src/zojax/contenttype/eventreg/eventregregistrationview.pt:33
+msgid "Attendee"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:255
+msgid "Surveys"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:256
+msgid "Survey"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:261
+msgid "Invitations"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:262
+msgid "Invitation"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:30
+msgid "Event URL"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:31
+msgid "Web address with more info about the event."
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:35
+#: src/zojax/contenttype/eventreg/eventregview.pt:17
+msgid "Contact Name"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:39
+#: src/zojax/contenttype/eventreg/eventregregistrationview.pt:20
+#: src/zojax/contenttype/eventreg/eventregview.pt:22
+msgid "Contact E-mail"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:43
+#: src/zojax/contenttype/eventreg/eventregregistrationview.pt:27
+#: src/zojax/contenttype/eventreg/eventregview.pt:29
+msgid "Contact Phone"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:47
+#: src/zojax/contenttype/eventreg/interfaces.py:99
+msgid "Body"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:48
+msgid "Event body text."
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:54
+msgid "Link to Directions"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:59
+msgid "Map"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:60
+msgid "Image with map."
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:65
+msgid "Announcement Comment"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:66
+msgid "Comment field will be displayed directly after To and From Time for example \"10-11:30 (Lunch will be served)\""
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:71
+msgid "Email Comment"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:72
+msgid "Comment field will be displayed directly after To and From Time in the email that is sent to registrants"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:77
+msgid "Manager Emails"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:79
+msgid "Manager Email"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:89
+#: src/zojax/contenttype/eventreg/interfaces.py:112
+#: src/zojax/contenttype/eventreg/interfaces.py:218
+msgid "Title"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:90
+msgid "Event group title."
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:94
+msgid "Description"
+msgstr ""
+
+#: src/zojax/contenttype/eventreg/interfaces.py:95
+msgid "A short summary of the event group."
+msgstr ""
+
