@@ -6,6 +6,7 @@
 
   <include package="zojax.autoinclude" file="meta.zcml" />
   <includeAllDependencies package="zojax.contenttype.eventreg" extras="test" />
+  <includeOverrides package="zojax.contenttype.eventreg.tests" file="overrides.zcml" />
 
   <interface
      name="DefaultSkin"
